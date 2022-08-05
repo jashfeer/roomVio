@@ -1,0 +1,514 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="//fonts.googleapis.com/css?family=Spartan:400,500,600,700,900&display=swap" rel="stylesheet">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="/assets/css/style-starter.css">
+  </head>
+  <body>
+<!--w3l-header-->
+
+<header class="w3l-header-nav">
+	<!--/nav-->
+	<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+		<div class="container">
+			<a class="navbar-brand" href="index.html">
+				<img src="/assets/images/hotels.png" alt="Your logo" style="height:35px;" /> RoomVio</a>
+			<!-- if logo is image enable this   
+						<a class="navbar-brand" href="#index.html">
+							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+						</a> -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item @@active">
+						<a class="nav-link" href="index.html">Home</a>
+					</li>
+                    <li class="nav-item active">
+						<a class="nav-link" href="/showRoomsToUser">Rooms</a>
+					</li>
+					<li class="nav-item @@about__active">
+            <a class="nav-link" href="/showUserBookings">My Bookings</a>
+        </li>
+
+                    {{ if. }}
+                        {{ if .U.Isactive }}
+                             {{ if eq .U.Useraccess "admin" }}
+                                  <li class="nav-item @@contact__active">
+                                    <a class="nav-link" href="/admin/panal">admin panal</a>
+                                     </li>
+                             {{ end }}
+                            
+                             {{ if eq .U.Useraccess "user " }}
+                             <li class="nav-item @@contact__active">
+                               <a class="nav-link" href="/user/panal">user panal</a>
+                                </li>
+                             {{ end }}
+                         <li class="nav-item @@contact__active">
+						<a class="nav-link" href="/logout">logout</a>
+					    </li>
+                         {{ else }}  
+                        <li class="nav-item @@contact__active">
+                        <a class="nav-link" href="/login">login</a>
+                         </li>
+                        {{end}}
+                     {{end}}
+                   
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--//nav-->
+</header>
+<!-- //w3l-header -->
+ <!-- main-slider -->
+
+ <!-- /main-slider -->
+<section class="w3l-availability-form" id="booking">
+    <!-- /w3l-availability-form-section -->
+    <div class="w3l-availability-form-main py-5">
+        <div class="container pt-lg-3 pb-lg-5">
+            <div class="forms-top">
+                <div class="form-right">
+                    <div class="form-inner-cont">
+                        <h3 class="title-small">Conform Booking</h3>
+
+                        {{if .Rm}}
+                        <div class="maghny-gd-1 card col-12 best-rooms">
+                          <div class="maghny-grid  ">
+                            <div class="d-flex">
+                              <figure class="effect-lily w-50 ">
+
+                                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                      <div class="carousel-item active">
+                                        <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.HotelImage1 }}" alt="">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.HotelImage2 }}" alt="">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.HotelImage3 }}" alt="">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.HotelImage4 }}" alt="">
+                                      </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                      <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                      <span class="sr-only">Next</span>
+                                    </a>
+                                  </div>
+
+
+
+                                  <figcaption class="w3set-hny">
+                                      <div>
+                                          <h4 class="top-text">
+                                              <span> Hotel Photos</span></h4>
+                                          <p>From 20$ </p>
+                                      </div>
+                                  </figcaption>
+                              </figure>
+                              <figure class="effect-lily ml-lg-5 ml-2 w-50">
+
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                  <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                  </ol>
+                                  <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                      <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.RoomImage1 }}" alt="">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.RoomImage2 }}" alt="">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.RoomImage3 }}" alt="">
+                                    </div>
+                                    <div class="carousel-item">
+                                      <img class="img-fluid" style="height: 55vh; width: 100%;" src="/{{ .Rm.RoomImage4 }}" alt="">
+                                    </div>
+                                  </div>
+                                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                  </a>
+                                </div>
+                                
+                                <figcaption class="w3set-hny">
+                                    <div>
+                                        <h4 class="top-text">
+                                            <span>Room photos</span></h4>
+                                        <p>From 20$ </p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                          </div>
+                              <div class="room-info d-flex row ml-3 mr-3">
+                                    <div class="col-6 ">
+                                          <h3 class="room-title " ><a href="\#">Hotel : {{ .Rm.HotelName }} 
+                                            {{ if eq .Rm.HotelStarrating 1 }}⭐️{{ end }}
+                                            {{ if eq .Rm.HotelStarrating 2 }}⭐️⭐️{{ end }}
+                                            {{ if eq .Rm.HotelStarrating 3 }}⭐️⭐️⭐️{{ end }}
+                                            {{ if eq .Rm.HotelStarrating 4 }}⭐️⭐️⭐️⭐️{{ end }}
+                                            {{ if eq .Rm.HotelStarrating 5 }}⭐️⭐️⭐️⭐️⭐️{{ end }}
+                                          </a></h3>
+                                          <p >Location : {{.Rm.HotelCity}}</p>
+                                          <p class="mb-3">Phone : {{.Rm.HotelPhone}}</p>
+                                          <ul class="mb-3">
+                                            {{if .Rm.HotelParking}}<li><span class="fa fa-check"></span>Parking available </li>{{end}}
+                                            {{if .Rm.HotelCctv}}<li><span class="fa fa-check"></span>CCTV available </li>{{end}}
+                                            {{if .Rm.HotelWifi}}<li><span class="fa fa-check"></span>WIFI available</li>{{end}}
+                                            {{if .Rm.HotelGameroom}}<li><span class="fa fa-check"></span>Game Room</li>{{end}}
+                                            {{if .Rm.HotelFitnesroom}}<li><span class="fa fa-check"></span>Fitnes Room</li>{{end}}
+                                            {{if .Rm.HotelPlayground}}<li><span class="fa fa-check"></span>Playground for childrens</li>{{end}}
+                                            {{if .Rm.HotelSwimmingpool}}<li><span class="fa fa-check"></span>Swimming pool</li>{{end}}
+                                            {{if .Rm.HotelCoffeshop}}<li><span class="fa fa-check"></span>Coffee shop</li>{{end}}
+                                            {{if .Rm.HotelRestaurant}}<li><span class="fa fa-check"></span>Restaurant</li>{{end}}
+                                            
+                                          </ul>
+                                          <p>{{.Rm.HotelDiscretion}}</p>
+                                   </div>
+                                    <div class="col-6">
+                                          <h3 class="room-title " ><a href="\#">Room number : {{ .Rm.RoomNumber }}  </a></h3>
+                                          <h6 class="fa mb-3" style="font-size: 20px; color:green;">Price: ₹{{.Rm.RoomPrice}}/day </h6>
+                                          <p >Room size : {{.Rm.RoomSize}}sqft</p>
+                                          <p >Room type : {{.Rm.RoomType}}</p>
+                                          <p class="mb-3">Room capacity : {{.Rm.RoomCapacity}}Guest</p>
+                                          <ul class="mb-3">
+                                            {{if .Rm.RoomAc}}<li><span class="fa fa-check"></span>AC available </li>{{end}}
+                                            {{if .Rm.RoomTv}}<li><span class="fa fa-check"></span>TV available </li>{{end}}
+                                            {{if .Rm.RoomWifi}}<li><span class="fa fa-check"></span>WIFI available</li>{{end}}
+                                            {{if .Rm.RoomAttachedBathroom}}<li><span class="fa fa-check"></span>Attached bathroom</li>{{end}}
+                                            {{if .Rm.RoomService}}<li><span class="fa fa-check"></span>Room service available</li>{{end}}
+                                            {{if .Rm.RoomWindowView}}<li><span class="fa fa-check"></span>Window view</li>{{end}}
+                                            {{if .Rm.HotelSwimmingpool}}<li><span class="fa fa-check"></span>Swimming pool</li>{{end}}
+                                            {{if .Rm.RoomBalconyTerruse}}<li><span class="fa fa-check"></span>Balcony/Terruse</li>{{end}}                                    
+                                          </ul>
+                                          <p>{{.Rm.RoomDiscretion}}</p>
+                                    </div>  
+                                    <p style="color: rgb(201, 46, 11);"><br>Your tottal price is room price (₹{{.Rm.RoomPrice}}) * Days({{.Days}}) = ₹{{.TottalAmount}} <br>You must pay the 20% of the tottal price for advance booking.The ammount of ₹{{.BookingAmount}}</p>
+
+                                      <form action="/conformBooking" method="POST" class="signin-form col-12">
+                                        <div class="row book-form">
+                                            <div class="form-input col-md-4 col-sm-6 mt-3">
+                                                <label>Check-in Date</label>
+                                                <input type="date" name="checkIn" value="{{.CheckIn}}" placeholder="Date" required="" disabled>
+                                            </div>
+                                            <div class="form-input col-md-4 col-sm-6 mt-3">
+                                                <label>Check-out Date</label>
+                                                <input type="date" name="checkOut" value="{{.CheckOut}}" placeholder="Date" required="" disabled>
+                                            </div>              
+                                            <div class="bottom-btn col-md-4 col-sm-6 mt-3">
+                                                <label>Pay and Conform </label>
+                                                <button class="btn btn-style btn-primary w-100 px-2" id="rzp-button1">Pay ₹{{.BookingAmount}}</button>
+                                            </div>
+                                        </div>
+                                    </form>                             
+                                   </div>
+                          </div>
+                      </div>
+
+                      {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="w3l-footer-29-main">
+  <div class="footer-29 py-5">
+    <div class="container py-lg-4">
+      <div class="row footer-top-29">
+        <div class=" col-md-4 col-sm-6 footer-list-29 footer-1">
+          <h6 class="footer-title-29">Contact Us</h6>
+          <ul>
+            <li>
+              <p><span class="fa fa-map-marker"></span> Luxury hotel, #32841 block, #221DRS Rental & Paid rooms
+                business, UK.</p>
+            </li>
+            <li><a href="tel:+7-800-999-800"><span class="fa fa-phone"></span> +(21)-255-999-8888</a></li>
+            <li><a href="mailto:roomvio@mail.com" class="mail"><span class="fa fa-envelope-open-o"></span>
+                roomvio@mail.com</a></li>
+          </ul>
+        </div>
+        <div class=" col-md-4 col-sm-6 footer-list-29 footer-2 mt-sm-0 mt-5">
+
+          <ul>
+            <h6 class="footer-title-29">Useful Links</h6>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="/showRoomsToUser">Rooms</a></li>
+            <li><a href="/showUserBookings"> My Bookings</a></li>
+            <li><a href="/showRoomsToUser">Book Now</a></li>
+          </ul>
+        </div>
+        <div class=" col-md-4 col-sm-12 footer-list-29 footer-3 ">
+            <h6 class="footer-title-29">Latest from blog</h6>
+            <div class="footer-post mb-4">
+              <a href="#url">Work Passionately</a>
+              <p class="small"><span class="fa fa-clock-o"></span> March 9, 2020</p>
+            </div>
+            <div class="footer-post">
+              <a href="#url">Work Passionately without any hesitation</a>
+              <p class="small"><span class="fa fa-clock-o"></span> March 9, 2020</p>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="w3l-footer-29-main w3l-copyright">
+  <div class="container">
+    <div class="row bottom-copies">
+      <p class="col-lg-8 copy-footer-29">© 2020 Hotels. All rights reserved | Designed by JASHFEER</p>
+
+      <div class="col-lg-4 main-social-footer-29">
+        <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
+        <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
+        <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
+        <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
+      </div>
+
+    </div>
+  </div>
+
+ <!-- move top -->
+ <button onclick="topFunction()" id="movetop" title="Go to top">
+  &#10548;
+</button>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+  "key": "rzp_test_X63gYA8NkKt6KM", // Enter the Key ID generated from the Dashboard
+  "amount": '{{ .BookingAmount}}', // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  "currency": "INR",
+  "name": "RoomVio",
+  "description": "Payment Transaction",
+  "image": "https://example.com/your_logo",
+  "order_id": '{{ .HomePageVars.OrderId}}', //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+ 
+  callback_url: '/conformBooking',
+  redirect: true,
+
+  "handler": function (response){
+      alert(response.razorpay_payment_id);
+      alert(response.razorpay_order_id);
+      alert(response.razorpay_signature)
+
+  },
+  "prefill": {
+      "name": '{{.U.Firstname}}',
+      "email": '{{.U.Email}}',
+      "contact": '{{ .U.Phone}}'
+  },
+  "notes": {
+      "address": "Razorpay Corporate Office"
+  },
+  "theme": {
+      "color": "#3399cc"
+  }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+  rzp1.open();
+  e.preventDefault();
+}
+</script>
+
+
+
+
+
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction()
+  };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("movetop").style.display = "block";
+    } else {
+      document.getElementById("movetop").style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- /move top -->
+</section>
+
+<!-- Template JavaScript -->
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+
+<script src="/assets/js/owl.carousel.js"></script>
+<!-- script for banner slider-->
+<script>
+  $(document).ready(function () {
+    $('.owl-one').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: false,
+      responsiveClass: true,
+      autoplay: false,
+      autoplayTimeout: 5000,
+      autoplaySpeed: 1000,
+      autoplayHoverPause: false,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        480: {
+          items: 1,
+          nav: false
+        },
+        667: {
+          items: 1,
+          nav: true
+        },
+        1000: {
+          items: 1,
+          nav: true
+        }
+      }
+    })
+  })
+</script>
+<!-- //script -->
+
+<!-- script for owlcarousel -->
+<script>
+  $(document).ready(function () {
+    $('.owl-testimonial').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: true,
+      responsiveClass: true,
+      autoplay: false,
+      autoplayTimeout: 5000,
+      autoplaySpeed: 1000,
+      autoplayHoverPause: false,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        480: {
+          items: 1,
+          nav: false
+        },
+        667: {
+          items: 1,
+          nav: true
+        },
+        1000: {
+          items: 1,
+          nav: true
+        }
+      }
+    })
+  })
+</script>
+<!-- //script for owlcarousel -->
+<script src="/assets/js/jquery.magnific-popup.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.popup-with-zoom-anim').magnificPopup({
+      type: 'inline',
+
+      fixedContentPos: false,
+      fixedBgPos: true,
+
+      overflowY: 'auto',
+
+      closeBtnInside: true,
+      preloader: false,
+
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-zoom-in'
+    });
+
+    $('.popup-with-move-anim').magnificPopup({
+      type: 'inline',
+
+      fixedContentPos: false,
+      fixedBgPos: true,
+
+      overflowY: 'auto',
+
+      closeBtnInside: true,
+      preloader: false,
+
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-slide-bottom'
+    });
+  });
+</script>
+
+
+<!-- disable body scroll which navbar is in active -->
+<script>
+$(function () {
+  $('.navbar-toggler').click(function () {
+    $('body').toggleClass('noscroll');
+  })
+});
+</script>
+<!-- disable body scroll which navbar is in active -->
+
+<script src="/assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

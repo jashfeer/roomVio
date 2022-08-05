@@ -1,0 +1,223 @@
+
+html {
+    scroll-behavior: smooth;
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    color: #585858;
+}
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+/*  wrapper */
+.wrapper {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 576px) {
+    .wrapper {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .wrapper {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .wrapper {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .wrapper {
+        max-width: 1140px;
+    }
+}
+/*  /wrapper */
+
+.d-grid {
+    display: grid;
+}
+button,
+input,
+select {
+    -webkit-appearance: none;
+    outline: none;
+}
+button,
+.btn,
+select {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+}
+h1,h2,h3,h4,h5,h6,p,ul,ol {
+    margin: 0;
+    padding: 0;
+}
+.w3l-signup-form #form-section {
+    background: url(../images/signup.jpg) no-repeat center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    position: relative;
+    display: grid;
+    align-items: center;
+    min-height: 100vh;
+    z-index: 0;
+    padding-top: 15px;
+}
+.form-fields {
+    grid-template-columns: 1fr 1fr;
+    
+}
+.w3l-signup-form #form-section:before {
+    content: "";
+    background: rgba(0, 0, 0, 0.65);
+    position: absolute;
+    top: 0;
+    min-height: 100%;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+.w3l-signup-form .logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.w3l-signup-form .logo a {
+    font-size: 36px;
+    color: #fff;
+    line-height: 40px;
+    font-weight: normal;
+}
+.w3l-signup-form .login-form {
+    background: #fff;
+    max-width: 600px;
+    margin: 0px auto;
+    box-shadow: 0px 9px 24px 5px rgba(0, 0, 0, 0.04);
+}
+.w3l-signup-form .login-form form input[type="text"],
+.w3l-signup-form .login-form form input[type="email"],
+.w3l-signup-form .login-form form input[type="password"] {
+    -webkit-appearance: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    color: #777777;
+    border: none;
+    border-bottom: 1px solid #e8e8e8;
+    width: 100%;
+    background-color: rgba(88, 83, 152, 0.03);
+    padding: 15px;
+}
+.w3l-signup-form .login-form form input[type="text"] {
+    border-right: 1px solid #e8e8e8;
+}
+.w3l-signup-form .login-form form input[type="password"] {
+    border-right: 1px solid #e8e8e8;
+    border-bottom: none;
+}
+.w3l-signup-form .login-form form input[type="text"]:focus,
+.w3l-signup-form .login-form form input[type="email"]:focus,
+.w3l-signup-form .login-form form input[type="password"]:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: none;
+}
+.w3l-signup-form .login-form form button {
+    -webkit-appearance: none;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    color: #ffffff;
+    background: #036b28;
+    height: 55px;
+    border: none;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: 0.3s ease-in-out;
+}
+.w3l-signup-form .login-form form button:hover {
+    background: #034d05;
+    transition: 0.3s ease-in-out;
+    opacity: 1;
+}
+.w3l-signup-form .login-form form button:focus {
+    outline: none;
+}
+
+.new-signup a {
+    font-size: 15px;
+    color: #2abda4;
+    text-align: center;
+    display: inline-block;
+}
+
+
+p.signup {
+    font-size: 15px;
+    color: #c5c5c5;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.new-signup a:hover {
+    text-decoration: underline;
+}
+
+
+/*  copyright */
+.copy-right {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 35px;
+}
+.copy-right p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    padding: 0 15px;
+}
+.copy-right p a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.copy-right p a:hover {
+    text-decoration: none;
+}
+/*  /copyright */
+
+
+@media (max-width: 767px) {
+    .copy-right {
+        bottom: 5px;
+    }
+}
+
+@media (max-width: 500px) {
+    .form-fields {
+        grid-template-columns: 1fr;
+    }
+    .w3l-signup-form .login-form form input[type="password"] {
+        border-right: none;
+        border-bottom: 1px solid #e8e8e8;
+    }
+}    

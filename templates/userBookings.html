@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0," />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- <link href="css/style2.css" rel="stylesheet" /> -->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">       
+         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" >
+        <link rel="stylesheet" href="/assets/css/styles.css" type="text/css" >
+
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+            <link href="//fonts.googleapis.com/css?family=Spartan:400,500,600,700,900&display=swap" rel="stylesheet">
+            <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        
+            <!-- Template CSS -->
+            <link rel="stylesheet" href="/assets/css/style-starter.css">
+
+    </head>
+    
+    
+    <header class="w3l-header-nav">
+        <!--/nav-->
+          <nav class="navbar  navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="/assets/images/hotels.png" alt="Your logo" style="height:35px;" /> RoomVio</a>
+                <!-- if logo is image enable this   
+                            <a class="navbar-brand" href="#index.html">
+                                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                            </a> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item @@about__active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item @@services__active">
+                            <a class="nav-link" href="/showRoomsToUser">Rooms</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/showUserBookings">My Bookings</a>
+                        </li>
+                        {{ if. }}
+                        {{ if .U.Isactive }}
+                             {{ if eq .U.Useraccess "admin" }}
+                                  <li class="nav-item @@contact__active">
+                                    <a class="nav-link" href="/admin/panal">admin panal</a>
+                                     </li>
+                             {{ end }}
+                             <li class="nav-item @@contact__active">
+					                	<a class="nav-link" href="/logout">logout</a>
+					                 </li>
+                            {{ else }}  
+                         <li class="nav-item @@contact__active">
+                        <a class="nav-link" href="/login">login</a>
+                         </li>
+                        {{end}}
+                     {{end}}
+                       
+                    </ul>
+                    <a href="/showRoomsToUser" class="ml-3 book btn btn-secondary btn-style">Book Now</a>
+                </div>
+            </div>
+        </nav>
+        <!--//nav-->
+    </header>
+    
+    
+    
+    <body class="best-rooms py-1">
+        <div class="container py-lg-3  py-sm-2">    
+              <div class="sb-nav-fixed">
+                     <div id="layoutSidenav_content">
+                            <main>
+                                <div class="container-fluid ">
+                                    <h3 class="title-big text-center mt-3"><u>Your Bookings</u></h3>
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <i class="fas fa-table me-1"></i>
+                                            List of your bookings
+                                        </div>
+                                        <div class="card-body overflow-auto">
+                                            <table cellpadding="0" class="table  table-bordered table-hover table-sm">
+                                                <thead>
+                                                    <tr >
+                                                        <th scope="col">Hotel Name</th>
+                                                        <th scope="col">Room Number</th>
+                                                        <th scope="col ">Check In </th>
+                                                        <th scope="col">Check Out</th>
+                                                        <th scope="col">Booking Days</th>
+                                                        <th scope="col">Booked At</th>
+                                                        <th scope="col">Booking Amount</th>
+                                                        <th scope="col">Balance Amount</th>
+                                                        <th scope="col">Tottal Amount</th>
+                                                        <th scope="col">Booking Status</th>
+                                                        <th></th>
+                                                     
+                    
+                                                    </tr>
+                                                </thead>
+
+                                                {{ if . }}
+                                                <tbody>
+                                                    {{ range .Bookings  }}
+                                                    <tr scope="col" >
+                                                    
+                                                        <td>{{.BookingHotelName}}</td>
+                                                        <td>{{.BookingRoomNumber}}</td>
+                                                        <td>{{.BookingCheckIn}}</td>
+                                                        <td>{{.BookingCheckOut}}</td>  
+                                                        <td>{{.BookingDays}} </td>
+                                                        <td>{{.CreatedAt}}</td>
+                                                        <td>₹ {{.BookingAmount}} </td>
+                                                        <td>₹ {{.BalanceAmount}} </td>
+                                                        <td>₹ {{.TottalAmount}} </td>
+                                                          <td>{{ if eq .BookingStatus "Canceled  " }}<p style="color:red ;text-align: center;">Canceled</p>{{ end }}
+                                                              {{ if eq .BookingStatus "Booked    " }}<p style="color:green ;text-align: center;">Booked</p>{{ end }}
+                                                               {{ if eq .BookingStatus "Processing" }}<p style="color: rgb(190, 152, 0);text-align: center;">Processing</p>{{ end }}
+                                                          </td>
+                                                        <td>
+                                                          <div class="table-data-feature">
+                                                              <a class="btn btn btn-danger"  role="button" href="userBookings/user/cancel?bookingid={{.BookingId}}">Cancel booking</a>
+      
+                                                          </div>
+                                                      </td>
+                                                    </tr>
+                                                    {{ end }}
+                                                </tbody>
+                                                {{ end }}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+
+
+
+                            <nav aria-label="Page navigation example">
+                              <ul class="pagination justify-content-center">
+                                <li class="page-item"><a class="page-link" href="/conformBooking/previous">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">{{.Page}}/{{.TottalPage}}</a></li>
+                                <li class="page-item"><a class="page-link" href="/conformBooking/next">Next</a></li>
+                              </ul>
+                            </nav>
+
+
+                    </div>
+                 </div>
+            </div>   
+            <section class="w3l-footer-29-main">
+              <div class="footer-29 py-5">
+                <div class="container py-lg-4">
+                  <div class="row footer-top-29">
+                    <div class=" col-md-4 col-sm-6 footer-list-29 footer-1">
+                      <h6 class="footer-title-29">Contact Us</h6>
+                      <ul>
+                        <li>
+                          <p><span class="fa fa-map-marker"></span> Luxury hotel, #32841 block, #221DRS Rental & Paid rooms
+                            business, UK.</p>
+                        </li>
+                        <li><a href="tel:+7-800-999-800"><span class="fa fa-phone"></span> +(21)-255-999-8888</a></li>
+                        <li><a href="mailto:roomvio@mail.com" class="mail"><span class="fa fa-envelope-open-o"></span>
+                            roomvio@mail.com</a></li>
+                      </ul>
+                    </div>
+                    <div class=" col-md-4 col-sm-6 footer-list-29 footer-2 mt-sm-0 mt-5">
+            
+                      <ul>
+                        <h6 class="footer-title-29">Useful Links</h6>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/showRoomsToUser">Rooms</a></li>
+                        <li><a href="/showUserBookings"> My Bookings</a></li>
+                        <li><a href="/showRoomsToUser">Book Now</a></li>
+                      </ul>
+                    </div>
+                    <div class=" col-md-4 col-sm-12 footer-list-29 footer-3 ">
+                        <h6 class="footer-title-29">Latest from blog</h6>
+                        <div class="footer-post mb-4">
+                          <a href="#url">Work Passionately</a>
+                          <p class="small"><span class="fa fa-clock-o"></span> March 9, 2020</p>
+                        </div>
+                        <div class="footer-post">
+                          <a href="#url">Work Passionately without any hesitation</a>
+                          <p class="small"><span class="fa fa-clock-o"></span> March 9, 2020</p>
+                        </div>
+                        
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          
+          <section class="w3l-footer-29-main w3l-copyright">
+            <div class="container">
+              <div class="row bottom-copies">
+                <p class="col-lg-8 copy-footer-29">© 2020 Hotels. All rights reserved | Designed by JASHFEER<a
+                    href="https://w3layouts.com">W3layouts</a></p>
+          
+                <div class="col-lg-4 main-social-footer-29">
+                  <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
+                  <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
+                  <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
+                  <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
+                </div>
+          
+              </div>
+            </div>
+          
+           <!-- move top -->
+           <button onclick="topFunction()" id="movetop" title="Go to top">
+            &#10548;
+          </button>
+          
+          
+          
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+          <script src="/assets/js/scripts.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+          <script src="/assets/demo/chart-area-demo.js"></script>
+          <script src="/assets/demo/chart-bar-demo.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+          <script src="/assets/js/datatables-simple-demo.js"></script>
+          <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function () {
+              scrollFunction()
+            };
+          
+            function scrollFunction() {
+              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+              } else {
+                document.getElementById("movetop").style.display = "none";
+              }
+            }
+          
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+              document.body.scrollTop = 0;
+              document.documentElement.scrollTop = 0;
+            }
+          </script>
+          <!-- /move top -->
+          </section>
+          
+          <!-- Template JavaScript -->
+          <script src="/assets/js/jquery-3.3.1.min.js"></script>
+          
+          <script src="/assets/js/owl.carousel.js"></script>
+          <!-- script for banner slider-->
+          <script>
+            $(document).ready(function () {
+              $('.owl-one').owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: false,
+                responsiveClass: true,
+                autoplay: false,
+                autoplayTimeout: 5000,
+                autoplaySpeed: 1000,
+                autoplayHoverPause: false,
+                responsive: {
+                  0: {
+                    items: 1,
+                    nav: false
+                  },
+                  480: {
+                    items: 1,
+                    nav: false
+                  },
+                  667: {
+                    items: 1,
+                    nav: true
+                  },
+                  1000: {
+                    items: 1,
+                    nav: true
+                  }
+                }
+              })
+            })
+          </script>
+          <!-- //script -->
+          
+          <!-- script for owlcarousel -->
+          <script>
+            $(document).ready(function () {
+              $('.owl-testimonial').owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: true,
+                responsiveClass: true,
+                autoplay: false,
+                autoplayTimeout: 5000,
+                autoplaySpeed: 1000,
+                autoplayHoverPause: false,
+                responsive: {
+                  0: {
+                    items: 1,
+                    nav: false
+                  },
+                  480: {
+                    items: 1,
+                    nav: false
+                  },
+                  667: {
+                    items: 1,
+                    nav: true
+                  },
+                  1000: {
+                    items: 1,
+                    nav: true
+                  }
+                }
+              })
+            })
+          </script>
+          <!-- //script for owlcarousel -->
+          <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+          <script>
+            $(document).ready(function () {
+              $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+          
+                fixedContentPos: false,
+                fixedBgPos: true,
+          
+                overflowY: 'auto',
+          
+                closeBtnInside: true,
+                preloader: false,
+          
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+              });
+          
+              $('.popup-with-move-anim').magnificPopup({
+                type: 'inline',
+          
+                fixedContentPos: false,
+                fixedBgPos: true,
+          
+                overflowY: 'auto',
+          
+                closeBtnInside: true,
+                preloader: false,
+          
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-slide-bottom'
+              });
+            });
+          </script>
+          
+          
+          <!-- disable body scroll which navbar is in active -->
+          <script>
+          $(function () {
+            $('.navbar-toggler').click(function () {
+              $('body').toggleClass('noscroll');
+            })
+          });
+          </script>
+          <!-- disable body scroll which navbar is in active -->
+          
+          <script src="/assets/js/bootstrap.min.js"></script>
+          <!-- JavaScript Bundle with Popper -->
+          
+          <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+          
+           
+     </body>
+    
+</html>

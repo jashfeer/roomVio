@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>RoomVio Login</title>
+
+	<!-- Meta tags -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- Style -->
+	<link rel="stylesheet" href="/assets/css/signup.css" type="text/css" media="all" />
+</head>
+
+<body>
+	<!-- login form -->
+	<section class="w3l-signup-form">
+		<div id="form-section">
+			<div class="wrapper">
+
+				<!-- logo -->
+				<div class="logo">
+					<a class="brand-logo" >Login</a>
+				</div>
+				<!-- //logo -->
+
+				<!-- form -->
+
+				
+				<div class="login-form ">
+					<form action="/login/process" method="POST">
+						<div class="form-fields">
+							<input type="email" name="email" placeholder="Email :" required="required" />
+							<input type="password" name="password" placeholder="Password :" required="required" />
+						</div>
+						<button type="submit">Login</button>
+					</form>
+				</div>
+				{{if eq . "login failed"}}
+				<span class="text-error">Incorrect username or password</span>
+				{{else if eq . "login success"}}
+				<span class="text-success">You have successfully logged in!</span>
+				{{end}}
+				<div class="new-signup">
+					<p class="signup">Did't have an Account? <a href="/signup" class="signuplink">Signup Now</a></p>
+				</div>
+				<!-- //form -->
+
+			</div>
+		</div>
+	</section>
+	<!-- /login form -->
+</body>
+
+</html>

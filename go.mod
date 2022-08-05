@@ -7,9 +7,9 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/razorpay/razorpay-go v0.0.0-20220720130739-c296173f2d92
 	github.com/satori/go.uuid v1.2.0
-	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
-	gorm.io/driver/postgres v1.3.7
-	gorm.io/gorm v1.23.6
+	golang.org/x/crypto v0.0.0-20220722155217-630584e8d5aa
+	gorm.io/driver/postgres v1.3.8
+	gorm.io/gorm v1.23.8
 )
 
 require (
@@ -23,6 +23,6 @@ require (
 	github.com/jackc/pgtype v1.11.0 // indirect
 	github.com/jackc/pgx/v4 v4.16.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
-	github.com/jinzhu/now v1.1.4 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	golang.org/x/text v0.3.7 // indirect
 )

@@ -53,7 +53,7 @@ func AdminPanal(res http.ResponseWriter,req *http.Request){
 	if pageAdminPanal == 0 {
 		pageAdminPanal = 1
 	}
-	limit := 2
+	limit := 5
 	offset := (pageAdminPanal - 1) * int64(limit)
 	var count int64
 	

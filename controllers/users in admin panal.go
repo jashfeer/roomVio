@@ -56,7 +56,7 @@ func UsersList(res http.ResponseWriter,req *http.Request){
 	if pageUsersList == 0 {
 		pageUsersList = 1
 	}
-	limit := 3
+	limit := 5
 	offset := (pageUsersList - 1) * int64(limit)
 	var count int64
 

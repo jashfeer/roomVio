@@ -54,7 +54,7 @@ func Hotel(res http.ResponseWriter, req *http.Request) {
 	if pageHotel == 0 {
 		pageHotel = 1
 	}
-	limit := 2
+	limit := 5
 	offset := (pageHotel - 1) * int64(limit)
 	var count int64
 	

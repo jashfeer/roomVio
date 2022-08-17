@@ -62,7 +62,7 @@ func UserBookings(res http.ResponseWriter, req *http.Request) {
 	if pageBookings == 0 {
 		pageBookings = 1
 	}
-	limit := 3
+	limit := 5
 	offset := (pageBookings - 1) * int64(limit)
 
 	bks := make([]booking, 0)

@@ -9,42 +9,38 @@ import (
 
 	"main.go/initialization"
 )
+
 var hotelId int
 
 var pageRoom int64
 var tottalPageRoom int64
 
-
 func RoomNextPage(res http.ResponseWriter, req *http.Request) {
 	if pageRoom == tottalPageRoom {
 		http.Redirect(res, req, "/room", http.StatusSeeOther)
-		} else {
-		pageRoom = pageRoom+ 1
+	} else {
+		pageRoom = pageRoom + 1
 		http.Redirect(res, req, "/room", http.StatusSeeOther)
 
 	}
 }
 func RoomPreviousPage(res http.ResponseWriter, req *http.Request) {
-	if pageRoom== 1 {
+	if pageRoom == 1 {
 		http.Redirect(res, req, "/room", http.StatusSeeOther)
-		} else {
+	} else {
 		pageRoom = pageRoom - 1
 		http.Redirect(res, req, "/room", http.StatusSeeOther)
 
 	}
 }
 
-
-
-
-
 func Room(res http.ResponseWriter, req *http.Request) {
-	if !alreadyLoggedIn(res,req){
+	if !alreadyLoggedIn(res, req) {
 		http.Redirect(res, req, "/login", http.StatusSeeOther)
 		return
 	}
-	u:=getUser(res,req)
-	if u.Useraccess!="admin"{
+	u := getUser(res, req)
+	if u.Useraccess != "admin" {
 		http.Redirect(res, req, "/", http.StatusSeeOther)
 	}
 	if req.Method != "GET" {
@@ -52,53 +48,51 @@ func Room(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-
 	if pageRoom == 0 {
 		pageRoom = 1
 	}
-	limit := 2
+	limit := 5
 	offset := (pageRoom - 1) * int64(limit)
 	var count int64
-	
-	type All struct{
-		Rms   []room
+
+	type All struct {
+		Rms        []room
 		Page       int64
 		TottalPage int64
 	}
-	all:=All{}
+	all := All{}
 
-	rms:=make([]room,0)
+	rms := make([]room, 0)
 
 	id := req.FormValue("id")
-	if id !=""{
+	if id != "" {
 		hotelId, _ = strconv.Atoi(id)
 	}
 
-
-	result:= initialization.Db.Where("room_hotel_id = ?", hotelId).Order("room_id asc").Limit(limit).Offset(int(offset)).Find(&rms).Count(&count)
+	result := initialization.Db.Where("room_hotel_id = ?", hotelId).Order("room_id asc").Limit(limit).Offset(int(offset)).Find(&rms).Count(&count)
 	if result.Error != nil {
 		http.Error(res, http.StatusText(500), 500)
 		return
 	}
 
-	all.Rms=rms
+	all.Rms = rms
 	if tottalPageRoom == 0 {
-	 num := count / int64(limit)
-	 bal := count % int64(limit)
-	 if bal != 0 {
-		 tottalPageRoom = num + 1
-	 } else {
-		 tottalPageRoom= num
-	 }
- }
- all.Page = pageRoom
- all.TottalPage = tottalPageRoom
+		num := count / int64(limit)
+		bal := count % int64(limit)
+		if bal != 0 {
+			tottalPageRoom = num + 1
+		} else {
+			tottalPageRoom = num
+		}
+	}
+	all.Page = pageRoom
+	all.TottalPage = tottalPageRoom
 
 	initialization.Tpl.ExecuteTemplate(res, "rooms.html", all)
 }
 
 func AddRoomFrom(res http.ResponseWriter, req *http.Request) {
-	if !alreadyLoggedIn(res,req) {
+	if !alreadyLoggedIn(res, req) {
 		http.Redirect(res, req, "/", http.StatusSeeOther)
 		return
 	}
@@ -108,7 +102,7 @@ func AddRoomFrom(res http.ResponseWriter, req *http.Request) {
 		fmt.Println("HOTEL ID err1111")
 		//panic(err)
 	}
-	fmt.Println("hotelId in AddRoomFrom: ",hotelId)
+	fmt.Println("hotelId in AddRoomFrom: ", hotelId)
 	initialization.Tpl.ExecuteTemplate(res, "add_room_form.html", hotelId)
 }
 
@@ -118,7 +112,7 @@ func AddRoomProcess(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	rm := room{}
-	 var err error
+	var err error
 	// id := req.FormValue("HotelId")
 	// rm.HotelId, err = strconv.Atoi(id)
 	// // rm.HotelId=7
@@ -126,7 +120,7 @@ func AddRoomProcess(res http.ResponseWriter, req *http.Request) {
 	// 	fmt.Println("HOTEL ID err2222")
 	// 	//panic(err)
 	// }
-	rm.RoomHotelId=hotelId
+	rm.RoomHotelId = hotelId
 	rm.RoomNumber, err = strconv.Atoi(req.FormValue("roomNumber"))
 	if err != nil {
 		fmt.Println("roomNumberErr")
@@ -299,17 +293,14 @@ func AddRoomProcess(res http.ResponseWriter, req *http.Request) {
 		//panic(err)
 	}
 	rm.RoomIsActive = true
-	rm.CreatedAt= time.Now()
+	rm.CreatedAt = time.Now()
 	rm.RoomDiscretion = req.FormValue("roomDescription")
-
-
-	
 
 	fmt.Println("Successful")
 
 	fmt.Println(rm)
 
-	initialization.Db.Select("room_number", "room_size", "room_type", "room_capacity", "room_ac", "room_tv", "room_wifi", "room_attached_bathroom", "room_room_service", "room_window_view", "room_balcony_terruse", "room_image1", "room_image2", "room_image3", "iroom_mage4", "room_price", "room_is_active", "room_hotel_id","created_at","room_discretion").Create(&rm)
+	initialization.Db.Select("room_number", "room_size", "room_type", "room_capacity", "room_ac", "room_tv", "room_wifi", "room_attached_bathroom", "room_service", "room_window_view", "room_balcony_terruse", "room_image1", "room_image2", "room_image3", "room_image4", "room_price", "room_is_active", "room_hotel_id", "created_at", "room_discretion").Create(&rm)
 	http.Redirect(res, req, "/hotel", http.StatusSeeOther)
 
 }

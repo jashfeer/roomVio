@@ -81,7 +81,7 @@
                                 <table cellpadding="0" class="table  table-bordered table-hover table-sm">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                       
                                             <th>Hotal_Name</th>
                                             <th>City</th>
                                             <th>Phone</th>
@@ -108,7 +108,7 @@
                                         {{range .Hts}}
                                         <tr>
                                            
-                                            <td>{{.HotelId}}</td>
+                                         
                                             <td>{{.HotelName}}</td>
                                             <td>{{.HotelCity}}</td>
                                             <td>{{.HotelPhone}}</td>
@@ -127,10 +127,10 @@
                                             <td>{{.HotelSwimmingpool}}</td>
                                             <td>{{.HotelCoffeshop}}</td>
                                             <td>{{.HotelRestaurant}}</td>
-                                            <td><img src="/{{.HotelImage1}}" style="width:60px;height:40px;"> </td>
-                                            <td><img src="/{{.HotelImage2}}" style="width:60px;height:40px;"></td>
-                                            <td><img src="/{{.HotelImage3}}" style="width:60px;height:40px;"> </td>
-                                            <td><img src="/{{.HotelImage4}}" style="width:60px;height:40px;"></td>
+                                            <td><img src="{{.HotelImage1}}" style="width:60px;height:40px;"> </td>
+                                            <td><img src="{{.HotelImage2}}" style="width:60px;height:40px;"></td>
+                                            <td><img src="{{.HotelImage3}}" style="width:60px;height:40px;"> </td>
+                                            <td><img src="{{.HotelImage4}}" style="width:60px;height:40px;"></td>
                                            <td><a class="btn btn btn-outline-success btn-sm"  role="button" href="/room?id={{.HotelId}}">Rooms</a></td>
                                                  <td>
                                                     <div class="table-data-feature">

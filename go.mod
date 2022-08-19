@@ -18,6 +18,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.17.1 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.12.14 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.12 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.27 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.18 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.12 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.3.19 // indirect
@@ -41,5 +42,6 @@ require (
 	github.com/jackc/pgx/v4 v4.16.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	golang.org/x/text v0.3.7 // indirect
 )

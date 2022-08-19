@@ -23,4 +23,5 @@ func Init() {
 	}
 	fmt.Println("you connected to your database.")
 	Tpl = template.Must(template.ParseGlob("templates/*.html"))
+	
 }

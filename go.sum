@@ -11,6 +11,8 @@ github.com/aws/aws-sdk-go-v2/credentials v1.12.14 h1:AtVG/amkjbDBfnPr/tuW2IG18HG
 github.com/aws/aws-sdk-go-v2/credentials v1.12.14/go.mod h1:opAndTyq+YN7IpVG57z2CeNuXSQMqTYxGGlYH0m0RMY=
 github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.12 h1:wgJBHO58Pc1V1QAnzdVM3JK3WbE/6eUF0JxCZ+/izz0=
 github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.12.12/go.mod h1:aZ4vZnyUuxedC7eD4JyEHpGnCz+O2sHQEx3VvAwklSE=
+github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.27 h1:xFXIMBci0UXStoOHq/8w0XIZPB2hgb9CD7uATJhqt10=
+github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.11.27/go.mod h1:+tj2cHQkChanggNZn1J2fJ1Cv6RO1TV0AA3472do31I=
 github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.18 h1:OmiwoVyLKEqqD5GvB683dbSqxiOfvx4U2lDZhG2Esc4=
 github.com/aws/aws-sdk-go-v2/internal/configsources v1.1.18/go.mod h1:348MLhzV1GSlZSMusdwQpXKbhD7X2gbI/TxwAPKkYZQ=
 github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.4.12 h1:5mvQDtNWtI6H56+E4LUnLWEmATMB7oEh+Z9RurtIuC0=
@@ -106,6 +108,7 @@ github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkr
 github.com/jinzhu/now v1.1.4/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
 github.com/jinzhu/now v1.1.5 h1:/o9tlHleP7gOFmsnYNz3RGnqzefHA47wQpKrrdTIwXQ=
 github.com/jinzhu/now v1.1.5/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
+github.com/jmespath/go-jmespath v0.4.0 h1:BEgLn5cpjn8UN1mAw4NjwDrS35OdebyEtFe+9YPoQUg=
 github.com/jmespath/go-jmespath v0.4.0/go.mod h1:T8mJZnbsbmF+m6zOOFylbeCJqk5+pHWvzYPziyZiYoo=
 github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfCI6z80xFu9LTZmf1ZRjMHUOPmWr69U=
 github.com/joho/godotenv v1.4.0 h1:3l4+N6zfMWnkbPEXKng2o2/MR5mSwTrBih4ZEkkz1lg=

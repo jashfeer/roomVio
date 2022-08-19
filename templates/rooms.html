@@ -81,7 +81,7 @@
                                 <table cellpadding="0" class="table  table-bordered table-hover table-sm">
                                     <thead>
                                         <tr>
-                                            <th>Room Id</th>
+                                          
                                             <th>Room number</th>
                                             <th>Room type </th>
                                             <th>Room Size</th>
@@ -107,7 +107,7 @@
                                         {{ range .Rms }}
                                         <tr>
                                            
-                                            <td>{{.RoomId}}</td>
+                                          
                                             <td>{{.RoomNumber}}</td>
                                             <td>{{.RoomType}}</td>
                                             <td>{{.RoomSize}}sqft</td>  
@@ -120,10 +120,10 @@
                                             <td>{{.RoomWindowView}}</td>
                                             <td>{{.RoomBalconyTerruse}}</td>
                         
-                                            <td><img src="/{{.RoomImage1}}" style="width:60px;height:40px;"> </td>
-                                            <td><img src="/{{.RoomImage2}}" style="width:60px;height:40px;"></td>
-                                            <td><img src="/{{.RoomImage3}}" style="width:60px;height:40px;"> </td>
-                                            <td><img src="/{{.RoomImage4}}" style="width:60px;height:40px;"></td>
+                                            <td><img src="{{.RoomImage1}}" style="width:60px;height:40px;"> </td>
+                                            <td><img src="{{.RoomImage2}}" style="width:60px;height:40px;"></td>
+                                            <td><img src="{{.RoomImage3}}" style="width:60px;height:40px;"> </td>
+                                            <td><img src="{{.RoomImage4}}" style="width:60px;height:40px;"></td>
                                             <td>{{.RoomPrice}}</td>
                                                  <td>
                                                     <div class="table-data-feature">

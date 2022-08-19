@@ -11,6 +11,7 @@ import (
 func main() {
 	fmt.Println("main func")
 	initialization.Init()
+	
 
 	fs := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))

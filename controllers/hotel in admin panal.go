@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"time"
 
+	"main.go/database"
 	"main.go/initialization"
 )
 
@@ -178,7 +179,7 @@ func AddHotelProcess(res http.ResponseWriter, req *http.Request) {
 	req.ParseMultipartForm(10 << 20)
 	//uploading image 1.....
 
-	image1, _, err := req.FormFile("image1")
+	image1, handler1, err := req.FormFile("image1")
 	if err != nil {
 		fmt.Println("Error retriving image1")
 		fmt.Println(err)
@@ -197,8 +198,13 @@ func AddHotelProcess(res http.ResponseWriter, req *http.Request) {
 	}
 	ImageFile1.Write(fileBytes1)
 
+	bucket1:= "roomvio"
+	key1:=ImageFile1.Name()
+	body1,_:=  handler1.Open()
+	location1 := database.UploadImage(bucket1,key1,body1)
+
 	//uploading image 2....
-	image2, _, err := req.FormFile("image2")
+	image2, handler2, err := req.FormFile("image2")
 	if err != nil {
 		fmt.Println("Error retriving image2")
 		fmt.Println(err)
@@ -218,8 +224,13 @@ func AddHotelProcess(res http.ResponseWriter, req *http.Request) {
 	}
 	ImageFile2.Write(fileBytes2)
 
+	bucket2:= "roomvio"
+	key2:=ImageFile2.Name()
+	body2,_:=  handler2.Open()
+	location2 := database.UploadImage(bucket2,key2,body2)
+
 	//uploading image 3.....
-	image3, _, err := req.FormFile("image3")
+	image3, handler3, err := req.FormFile("image3")
 	if err != nil {
 		fmt.Println("Error retriving image3")
 		fmt.Println(err)
@@ -239,8 +250,13 @@ func AddHotelProcess(res http.ResponseWriter, req *http.Request) {
 	}
 	ImageFile3.Write(fileBytes3)
 
+	bucket3:= "roomvio"
+	key3:=ImageFile3.Name()
+	body3,_:=  handler3.Open()
+	location3 := database.UploadImage(bucket3,key3,body3)
+
 	//uploading image 4....
-	image4, _, err := req.FormFile("image4")
+	image4, handler4, err := req.FormFile("image4")
 	if err != nil {
 		fmt.Println("Error retriving image4")
 		fmt.Println(err)
@@ -260,10 +276,16 @@ func AddHotelProcess(res http.ResponseWriter, req *http.Request) {
 	}
 	ImageFile4.Write(fileBytes4)
 
-	ht.HotelImage1 = ImageFile1.Name()
-	ht.HotelImage2 = ImageFile2.Name()
-	ht.HotelImage3 = ImageFile3.Name()
-	ht.HotelImage4 = ImageFile4.Name()
+	bucket4:= "roomvio"
+	key4:=ImageFile4.Name()
+	body4,_:=  handler4.Open()
+	location4 := database.UploadImage(bucket4,key4,body4)
+
+
+	ht.HotelImage1 = location1
+	ht.HotelImage2 = location2
+	ht.HotelImage3 = location3
+	ht.HotelImage4 = location4
 
 	ht.HotelDiscretion = req.FormValue("hotelDescription")
 

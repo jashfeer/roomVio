@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: roomvio-service
+spec:
+  selector:
+    app: roomvio-app
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roomvio-app
+spec:
+  selector:
+    matchLabels:
+      app: roomvio-app
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: roomvio-app
+    spec:
+      containers:
+      - name: roomvio-app
+        image: jashfeer/roomvio:v-1.01
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+
+
+

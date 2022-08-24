@@ -11,12 +11,11 @@ import (
 func main() {
 	fmt.Println("main func")
 	initialization.Init()
-	
 
 	fs := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
 
-	//user template
+	//user templates
 	http.HandleFunc("/", controllers.Index)
 	http.HandleFunc("/login", controllers.LoginFrome)
 	http.HandleFunc("/login/process", controllers.LoginProcess)
@@ -38,10 +37,7 @@ func main() {
 	http.HandleFunc("/conformBooking/next", controllers.UserBookingsNextPage)
 	http.HandleFunc("/conformBooking/previous", controllers.UserBookingsPreviousPage)
 
-	
-
-
-	//admin template
+	//admin templates
 	http.HandleFunc("/admin/panal", controllers.AdminPanal)
 	http.HandleFunc("/admin/panal/next", controllers.AdminPanalNextPage)
 	http.HandleFunc("/admin/panal/previous", controllers.AdminPanalPreviousPage)
@@ -60,7 +56,6 @@ func main() {
 	http.HandleFunc("/hotel/next", controllers.HotelNextPage)
 	http.HandleFunc("/hotel/previous", controllers.HotelPreviousPage)
 
-
 	http.HandleFunc("/room", controllers.Room)
 	http.HandleFunc("/room/addRoom", controllers.AddRoomFrom)
 	http.HandleFunc("/addRoom/process", controllers.AddRoomProcess)
@@ -71,8 +66,6 @@ func main() {
 	http.HandleFunc("/conformBooking", controllers.ConformBooking)
 	http.HandleFunc("/conformBooking/booked", controllers.Booked)
 	http.HandleFunc("/conformBooking/cancel", controllers.Cancel)
-
-
 
 	http.ListenAndServe(":8080", nil)
 }
